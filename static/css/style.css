@@ -1,0 +1,706 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: #0d0d0d;
+    color: white;
+    min-height: 100vh;
+}
+
+nav {
+    width: 100%;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav h1 {
+    color: gold;
+    font-size: 28px;
+    letter-spacing: 2px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: gold;
+}
+
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)),
+                url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.overlay h2 {
+    font-size: 55px;
+    color: gold;
+    margin-bottom: 20px;
+    animation: fadeInDown 1.5s ease;
+}
+
+.overlay p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    animation: fadeInUp 1.5s ease;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: gold;
+    color: black;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+    background: #ffd700;
+}
+
+.page-section {
+    padding: 60px 40px;
+    text-align: center;
+}
+
+.page-section h2 {
+    font-size: 40px;
+    color: gold;
+    margin-bottom: 40px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,215,0,0.2);
+    padding: 25px;
+    border-radius: 18px;
+    backdrop-filter: blur(8px);
+    transition: 0.3s;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: gold;
+}
+
+.card h3 {
+    color: gold;
+    margin-bottom: 10px;
+}
+
+.form-section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.form-box {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,215,0,0.2);
+    padding: 35px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 450px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 35px rgba(0,0,0,0.3);
+}
+
+.form-box h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: gold;
+}
+
+.form-box input,
+.form-box textarea,
+.form-box select {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 18px;
+    border: none;
+    border-radius: 12px;
+    outline: none;
+    background: rgba(255,255,255,0.12);
+    color: white;
+}
+
+.form-box input::placeholder,
+.form-box textarea::placeholder {
+    color: #ddd;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-35px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media(max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .nav-links {
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: inline-block;
+        margin: 8px 10px;
+    }
+
+    .overlay h2 {
+        font-size: 38px;
+    }
+
+    .overlay p {
+        font-size: 16px;
+    }
+}
+
+--------------------
+/* Flash Messages */
+.flash {
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.flash.success {
+    background: rgba(0, 128, 0, 0.25);
+    color: #7CFF7C;
+    border: 1px solid #7CFF7C;
+}
+
+.flash.error {
+    background: rgba(255, 0, 0, 0.18);
+    color: #ff9a9a;
+    border: 1px solid #ff9a9a;
+}
+
+.welcome-text {
+    color: gold;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+-----------------------------------------------
+/* Review Form */
+.review-form-box {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.star-rating {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    text-align: left;
+    color: gold;
+    font-size: 18px;
+}
+
+.star-rating input {
+    margin-right: 10px;
+    width: auto;
+}
+
+.stars {
+    color: gold;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+----------------------------------------------------------
+
+/* Admin Dashboard Tables */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+table th,
+table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    color: white;
+}
+
+table th {
+    background: rgba(255, 215, 0, 0.15);
+    color: gold;
+}
+
+table tr:hover {
+    background: rgba(255,255,255,0.05);
+}
+-------------------------------------------------------
+/* Chat Assistant */
+.chat-toggle {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: gold;
+    color: black;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+    z-index: 9999;
+    transition: 0.3s;
+}
+
+.chat-toggle:hover {
+    transform: scale(1.08);
+}
+
+.chat-container {
+    position: fixed;
+    bottom: 100px;
+    right: 25px;
+    width: 340px;
+    max-height: 500px;
+    background: #111;
+    border: 1px solid rgba(255,215,0,0.3);
+    border-radius: 20px;
+    overflow: hidden;
+    display: none;
+    flex-direction: column;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.45);
+    z-index: 9999;
+}
+
+.chat-header {
+    background: gold;
+    color: black;
+    padding: 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chat-header span {
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.chat-body {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #0d0d0d;
+}
+
+.user-message,
+.bot-message {
+    max-width: 80%;
+    padding: 12px 14px;
+    border-radius: 16px;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.user-message {
+    align-self: flex-end;
+    background: gold;
+    color: black;
+    border-bottom-right-radius: 5px;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background: rgba(255,255,255,0.08);
+    color: white;
+    border-bottom-left-radius: 5px;
+}
+
+.chat-footer {
+    display: flex;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    background: #111;
+}
+
+.chat-footer input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 14px;
+    background: transparent;
+    color: white;
+}
+
+.chat-footer button {
+    background: gold;
+    border: none;
+    width: 60px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+@media(max-width: 480px) {
+    .chat-container {
+        width: calc(100% - 30px);
+        right: 15px;
+        bottom: 90px;
+    }
+
+    .chat-toggle {
+        right: 15px;
+        bottom: 20px;
+    }
+}
+
+-------------------------------------------------------
+.voice-btn {
+    background: #222;
+    color: gold;
+    border: none;
+    width: 55px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: bold;
+    border-left: 1px solid rgba(255,255,255,0.08);
+}
+
+.voice-btn:hover {
+    background: #333;
+}
+--------------------------------------------------------
+.availability-box {
+    background: rgba(255, 215, 0, 0.08);
+    border: 1px solid rgba(255, 215, 0, 0.25);
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 20px;
+    color: white;
+    text-align: left;
+}
+
+.availability-box h3 {
+    color: gold;
+    margin-bottom: 10px;
+}
+
+.availability-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.availability-box li {
+    margin: 8px 0;
+    font-size: 15px;
+}
+---------------------------------------------------------
+
+.chat-language {
+    padding: 10px 15px;
+    background: #111;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.chat-language select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background: #1c1c1c;
+    color: white;
+    outline: none;
+    font-size: 14px;
+}
+----------------------------------------------------------
+/* =========================
+   MENU PAGE - PREMIUM STYLE
+========================= */
+
+.menu-page {
+    min-height: 100vh;
+    padding: 120px 30px 60px;
+    background: linear-gradient(135deg, #0b0b0b, #141414, #1c1c1c);
+    color: white;
+}
+
+.menu-container {
+    max-width: 1450px;
+    margin: auto;
+}
+
+.menu-top {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.hotel-title-box {
+    display: inline-block;
+    padding: 27px 150px;
+    border: 1px solid rgba(255, 215, 0, 0.25);
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 35px rgba(255, 215, 0, 0.08);
+}
+
+.line-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.line-group span {
+    width: 60px;
+    height: 2px;
+    background: gold;
+    display: block;
+    border-radius: 10px;
+}
+
+.hotel-name {
+    font-size: 46px;
+    font-weight: 850;
+    color: gold;
+    letter-spacing: 4px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.hotel-subtitle {
+    font-size: 15px;
+    color: #ddd;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* FILTERS */
+.menu-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+    border: 1px solid rgba(255, 215, 0, 0.18);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: gold;
+    color: black;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 215, 0, 0.25);
+}
+
+/* GRID */
+.menu-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 900px;
+    margin: auto;
+}
+
+/* CARD STYLE */
+.menu-section {
+    background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255, 215, 0, 0.18);
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.28);
+    transition: 0.35s ease;
+}
+
+.menu-section:hover {
+    transform: translateY(-6px) scale(1.01);
+    box-shadow: 0 18px 45px rgba(255, 215, 0, 0.10);
+}
+
+.menu-section h2 {
+    color: gold;
+    font-size: 22px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.18);
+    padding-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.menu-note {
+    font-size: 13px;
+    color: #bbb;
+    margin-bottom: 12px;
+    font-style: italic;
+}
+
+/* ITEMS */
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 11px 0;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+    font-size: 15px;
+    color: #f3f3f3;
+    transition: 0.25s ease;
+}
+
+.menu-item:hover {
+    padding-left: 6px;
+    color: #fff;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+.menu-item span:last-child {
+    color: gold;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* SHAWARMA 4-COLUMN ITEM */
+.menu-item-4 {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+}
+
+.menu-item-4 span {
+    font-size: 14px;
+}
+
+.menu-item-4 span:first-child {
+    font-weight: 600;
+    color: #fff;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 1100px) {
+    .menu-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .menu-page {
+        padding: 100px 18px 40px;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hotel-name {
+        font-size: 30px;
+    }
+
+    .menu-section {
+        padding: 18px;
+    }
+
+    .menu-item {
+        font-size: 14px;
+    }
+
+    .menu-item-4 {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        padding: 14px 0;
+    }
+
+    .menu-item-4 span {
+        display: block;
+    }
+
+    .filter-btn {
+        font-size: 13px;
+        padding: 10px 18px;
+    }
+}

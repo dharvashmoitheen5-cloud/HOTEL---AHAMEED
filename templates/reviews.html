@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav>
+    <h1>HOTEL  AHAMEED</h1>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/menu">Menu</a>
+        <a href="/booking">Booking</a>
+        <a href="/reviews">Reviews</a>
+        <a href="/help">Help</a>
+        {% if session.get('user_name') %}
+            <a href="/history">History</a>
+            <a href="/logout">Logout</a>
+        {% else %}
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+        {% endif %}
+    </div>
+</nav>
+
+<section class="page-section">
+    <h2>Customer Reviews</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <p class="flash {{ category }}">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% if session.get('user_name') %}
+    <div class="review-form-box">
+        <form method="POST" class="form-box">
+            <h3>Leave Your Review</h3>
+
+            <div class="star-rating">
+                <input type="radio" name="rating" value="5" required> ⭐⭐⭐⭐⭐
+                <input type="radio" name="rating" value="4"> ⭐⭐⭐⭐
+                <input type="radio" name="rating" value="3"> ⭐⭐⭐
+                <input type="radio" name="rating" value="2"> ⭐⭐
+                <input type="radio" name="rating" value="1"> ⭐
+            </div>
+
+            <textarea name="message" placeholder="Write your review..." required></textarea>
+            <button type="submit" class="btn">Submit Review</button>
+        </form>
+    </div>
+    {% else %}
+        <p style="margin-bottom: 30px;">Please <a href="/login" style="color: gold;">login</a> to submit a review.</p>
+    {% endif %}
+
+    <div class="menu-grid">
+        {% if reviews %}
+            {% for review in reviews %}
+                <div class="card">
+                    <h3>{{ review.name }}</h3>
+                    <p class="stars">
+                        {% for i in range(review.rating|int) %}
+                            ⭐
+                        {% endfor %}
+                    </p>
+                    <p>{{ review.message }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="card">
+                <h3>No Reviews Yet</h3>
+                <p>Be the first one to share your experience!</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+</body>
+</html>

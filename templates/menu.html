@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu - HOTEL  AHAMEED</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <h1>HOTEL  AHAMEED</h1>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/menu">Menu</a>
+            <a href="/booking">Booking</a>
+            <a href="/reviews">Reviews</a>
+            <a href="/help">Help</a>
+            <a href="/history">History</a>
+            {% if session.get('user_id') %}
+                <a href="/logout">Logout</a>
+            {% else %}
+                <a href="/login">Login</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <!-- MENU PAGE -->
+    <section class="menu-page">
+        <div class="menu-container">
+
+            <!-- Header -->
+            <div class="menu-top">
+                <div class="hotel-title-box">
+                    <div class="line-group">
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <h1 class="hotel-name">   HOTEL  AHAMEED   </h1>
+                    <p class="hotel-subtitle">Veg & Non-Veg</p>
+                </div>
+            </div>
+
+            <!-- FILTER BUTTONS -->
+            <div class="menu-filters">
+    <button class="filter-btn active" onclick="filterMenu('all')">All</button>
+    <button class="filter-btn" onclick="filterMenu('veg-nonveg')">Veg & Non-Veg</button>
+    <button class="filter-btn" onclick="filterMenu('biryani')">Biryani</button>
+    <button class="filter-btn" onclick="filterMenu('shawarma')">Shawarma</button>
+</div>
+
+            <!-- MENU GRID -->
+            <div class="menu-grid">
+
+                <!-- COLUMN 1 -->
+                <div class="menu-column">
+
+                    <div class="menu-section" data-category="biryani nonveg">
+                        <h2>BIRIYANI</h2>
+                        <div class="menu-item"><span>Chicken 1/2</span><span>₹160</span></div>
+                        <div class="menu-item"><span>Chicken 1/4</span><span>₹120</span></div>
+                        <div class="menu-item"><span>Chicken 65 Biriyani</span><span>₹170</span></div>
+                        <div class="menu-item"><span>Chicken Kushka</span><span>₹100</span></div>
+                        <div class="menu-item"><span>Egg Kushka</span><span>₹110</span></div>
+                    </div>
+
+                    <div class="menu-section" data-category="biryani nonveg">
+                        <h2>BUCKET BIRIYANI</h2>
+                        <div class="menu-item"><span>Family Pack (5 Person)</span><span>₹1000</span></div>
+                        <div class="menu-item"><span>Party Pack (10 Person)</span><span>₹1900</span></div>
+                        <div class="menu-item"><span>Friends Pack (15 Person)</span><span>₹2900</span></div>
+                    </div>
+
+                    <div class="menu-section" data-category="nonveg">
+                        <h2>GRAVY NON VEG</h2>
+                        <div class="menu-item"><span>Chicken Masala</span><span>₹130</span></div>
+                        <div class="menu-item"><span>Pepper Chicken</span><span>₹150</span></div>
+                        <div class="menu-item"><span>Hyderabadi Chicken</span><span>₹150</span></div>
+                        <div class="menu-item"><span>Butter Chicken</span><span>₹180</span></div>
+                        <div class="menu-item"><span>Mughlai Chicken</span><span>₹160</span></div>
+                        <div class="menu-item"><span>Chettinad Chicken</span><span>₹160</span></div>
+                        <div class="menu-item"><span>Punjabi Chicken Masala</span><span>₹160</span></div>
+                        <div class="menu-item"><span>Kadai Chicken</span><span>₹160</span></div>
+                        <div class="menu-item"><span>Mutton Masala</span><span>₹220</span></div>
+                        <div class="menu-item"><span>Mutton Fry</span><span>₹240</span></div>
+                        <div class="menu-item"><span>Mutton Pepper Masala</span><span>₹240</span></div>
+                    </div>
+
+                    <div class="menu-section" data-category="veg">
+                        <h2>GRAVY VEG</h2>
+                        <div class="menu-item"><span>Veg Masala</span><span>₹80</span></div>
+                        <div class="menu-item"><span>Paneer Butter Masala</span><span>₹140</span></div>
+                        <div class="menu-item"><span>Kadai Paneer Masala</span><span>₹140</span></div>
+                        <div class="menu-item"><span>Gobi Masala</span><span>₹100</span></div>
+                        <div class="menu-item"><span>Mushroom Masala</span><span>₹120</span></div>
+                        <div class="menu-item"><span>Gobi Manchurian</span><span>₹110</span></div>
+                    </div>
+
+                </div>
+
+                <!-- COLUMN 2 -->
+                <div class="menu-column">
+
+                    <div class="menu-section" data-category="nonveg">
+                        <h2>RICE / NOODLES NON VEG</h2>
+                        <p class="menu-note">1 By 2 Extra ₹10</p>
+                        <div class="menu-item"><span>Chicken Fried Rice / Noodles</span><span>₹150</span></div>
+                        <div class="menu-item"><span>Chicken Shezwan Rice / Noodles</span><span>₹170</span></div>
+                        <div class="menu-item"><span>Mutton Fried Rice / Noodles</span><span>₹240</span></div>
+                        <div class="menu-item"><span>Mutton Shezwan Rice / Noodles</span><span>₹260</span></div>
+                        <div class="menu-item"><span>Prawn Fried Rice / Noodles</span><span>₹180</span></div>
+                        <div class="menu-item"><span>Prawn Shezwan Rice / Noodles</span><span>₹200</span></div>
+                        <div class="menu-item"><span>Fish Fried Rice / Noodles</span><span>₹170</span></div>
+                        <div class="menu-item"><span>Fish Shezwan Rice / Noodles</span><span>₹190</span></div>
+                        <div class="menu-item"><span>Egg Fried Rice / Noodles</span><span>₹100</span></div>
+                        <div class="menu-item"><span>Egg Shezwan Rice / Noodles</span><span>₹110</span></div>
+                        <div class="menu-item"><span>Mixed Fried Rice</span><span>₹300</span></div>
+                    </div>
+
+                    <div class="menu-section" data-category="veg">
+                        <h2>RICE / NOODLES VEG</h2>
+                        <div class="menu-item"><span>Veg Rice / Noodles</span><span>₹90</span></div>
+                        <div class="menu-item"><span>Paneer Rice / Noodles</span><span>₹130</span></div>
+                        <div class="menu-item"><span>Paneer Shezwan Rice / Noodles</span><span>₹140</span></div>
+                        <div class="menu-item"><span>Mushroom Rice / Noodles</span><span>₹120</span></div>
+                        <div class="menu-item"><span>Mushroom Shezwan Rice / Noodles</span><span>₹130</span></div>
+                        <div class="menu-item"><span>Gobi Rice / Noodles</span><span>₹120</span></div>
+                        <div class="menu-item"><span>Gobi Shezwan Rice / Noodles</span><span>₹130</span></div>
+                    </div>
+
+                    <div class="menu-section" data-category="nonveg">
+                        <h2>CHINESE</h2>
+                        <div class="menu-item"><span>Chilly Chicken</span><span>₹160</span></div>
+                        <div class="menu-item"><span>Chilly Prawn</span><span>₹180</span></div>
+                        <div class="menu-item"><span>Garlic Chicken</span><span>₹160</span></div>
+                        <div class="menu-item"><span>Ginger Chicken</span><span>₹160</span></div>
+                        <div class="menu-item"><span>Lemon Chicken</span><span>₹160</span></div>
+                        <div class="menu-item"><span>Chicken Manchurian</span><span>₹170</span></div>
+                        <div class="menu-item"><span>Chicken Lollipop Dry</span><span>₹140</span></div>
+                        <div class="menu-item"><span>Chicken Lollipop Saucy</span><span>₹160</span></div>
+                    </div>
+
+                    <div class="menu-section" data-category="nonveg">
+                        <h2>TANDOORI</h2>
+                        <div class="menu-item"><span>Tandoori Full</span><span>₹420</span></div>
+                        <div class="menu-item"><span>Tandoori Half</span><span>₹220</span></div>
+                        <div class="menu-item"><span>Tandoori Quarter</span><span>₹120</span></div>
+                    </div>
+
+                    <div class="menu-section" data-category="nonveg">
+                        <h2>GRILL CHICKEN</h2>
+                        <div class="menu-item"><span>Full Grill Chicken</span><span>₹400</span></div>
+                        <div class="menu-item"><span>Half Grill Chicken</span><span>₹210</span></div>
+                    </div>
+
+                </div>
+
+                <!-- COLUMN 3 -->
+                <div class="menu-column">
+
+                    <div class="menu-section" data-category="nonveg">
+                        <h2>DRY FRY / NON VEG</h2>
+                        <div class="menu-item"><span>Chicken 65 Boneless</span><span>₹160</span></div>
+                        <div class="menu-item"><span>Chicken 65 Bone</span><span>₹140</span></div>
+                        <div class="menu-item"><span>Prawn 65</span><span>₹180</span></div>
+                        <div class="menu-item"><span>Fish 65</span><span>₹170</span></div>
+                        <div class="menu-item"><span>Paneer 65</span><span>₹130</span></div>
+                        <div class="menu-item"><span>Gobi 65</span><span>₹90</span></div>
+                    </div>
+
+                    <div class="menu-section" data-category="shawarma nonveg">
+                        <h2>SHAWARMA</h2>
+
+                        <div class="menu-item menu-item-4">
+                            <span>Classic Shawarma</span>
+                            <span>Roll ₹80</span>
+                            <span>Plate ₹160</span>
+                            <span>SPL ₹120/₹240</span>
+                        </div>
+
+                        <div class="menu-item menu-item-4">
+                            <span>Spicy Shawarma</span>
+                            <span>Roll ₹90</span>
+                            <span>Plate ₹180</span>
+                            <span>SPL ₹130/₹260</span>
+                        </div>
+
+                        <div class="menu-item menu-item-4">
+                            <span>Peri Peri Shawarma</span>
+                            <span>Roll ₹90</span>
+                            <span>Plate ₹180</span>
+                            <span>SPL —</span>
+                        </div>
+
+                        <div class="menu-item menu-item-4">
+                            <span>Mexican Shawarma</span>
+                            <span>Roll ₹90</span>
+                            <span>Plate ₹180</span>
+                            <span>SPL —</span>
+                        </div>
+
+                        <div class="menu-item menu-item-4">
+                            <span>BBQ Shawarma</span>
+                            <span>Roll ₹90</span>
+                            <span>Plate ₹180</span>
+                            <span>SPL —</span>
+                        </div>
+
+                        <div class="menu-item"><span>Kuboos (1pc)</span><span>₹15</span></div>
+                    </div>
+
+                    <div class="menu-section" data-category="veg">
+                        <h2>DOSA VARIETIES</h2>
+                        <div class="menu-item"><span>Kal Dosai</span><span>₹25</span></div>
+                        <div class="menu-item"><span>Nice Dosai</span><span>₹40</span></div>
+                        <div class="menu-item"><span>Egg Dosai</span><span>₹50</span></div>
+                        <div class="menu-item"><span>Kal Egg Dosai</span><span>₹40</span></div>
+                        <div class="menu-item"><span>Onion Dosai</span><span>₹55</span></div>
+                        <div class="menu-item"><span>Podi Dosai</span><span>₹50</span></div>
+                    </div>
+
+                    <div class="menu-section" data-category="nonveg">
+                        <h2>EGG VARIETIES</h2>
+                        <div class="menu-item"><span>Omlette</span><span>₹20</span></div>
+                        <div class="menu-item"><span>Half Boil</span><span>₹20</span></div>
+                        <div class="menu-item"><span>Kalakki</span><span>₹20</span></div>
+                        <div class="menu-item"><span>Podimass</span><span>₹50</span></div>
+                        <div class="menu-item"><span>Boiled Egg</span><span>₹15</span></div>
+                    </div>
+
+                    <div class="menu-section" data-category="veg">
+                        <h2>BEEDA</h2>
+                        <div class="menu-item"><span>Beeda</span><span>₹10</span></div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function filterMenu(category) {
+            const sections = document.querySelectorAll('.menu-section');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            sections.forEach(section => {
+                const categories = section.getAttribute('data-category');
+
+                if (category === 'all' || categories.includes(category)) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+    </script>
+<script>
+    function filterMenu(category) {
+        const sections = document.querySelectorAll('.menu-section');
+        const buttons = document.querySelectorAll('.filter-btn');
+
+        buttons.forEach(btn => btn.classList.remove('active'));
+
+        buttons.forEach(btn => {
+            const btnText = btn.textContent.trim().toLowerCase();
+
+            if (
+                (category === 'all' && btnText === 'all') ||
+                (category === 'veg-nonveg' && btnText === 'veg & non-veg') ||
+                (category === 'biryani' && btnText === 'biryani') ||
+                (category === 'shawarma' && btnText === 'shawarma')
+            ) {
+                btn.classList.add('active');
+            }
+        });
+
+        sections.forEach(section => {
+            const categories = section.getAttribute('data-category');
+
+            if (category === 'all') {
+                section.style.display = 'block';
+            } 
+            else if (category === 'veg-nonveg') {
+                if (categories.includes('veg') || categories.includes('nonveg')) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            } 
+            else if (categories.includes(category)) {
+                section.style.display = 'block';
+            } 
+            else {
+                section.style.display = 'none';
+            }
+        });
+    }
+</script>
+</body>
+</html>

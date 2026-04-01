@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav>
+    <h1>ADMIN DASHBOARD</h1>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/admin">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
+
+<section class="page-section">
+    <h2>Restaurant Admin Panel</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <p class="flash {{ category }}">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <div class="menu-grid">
+        <div class="card">
+            <h3>Total Users</h3>
+            <p>{{ total_users }}</p>
+        </div>
+        <div class="card">
+            <h3>Total Bookings</h3>
+            <p>{{ total_bookings }}</p>
+        </div>
+        <div class="card">
+            <h3>Total Reviews</h3>
+            <p>{{ total_reviews }}</p>
+        </div>
+    </div>
+</section>
+
+<section class="page-section">
+    <h2>Registered Users</h2>
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Role</th>
+            </tr>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.phone }}</td>
+                <td>{{ user.role }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</section>
+
+<section class="page-section">
+    <h2>All Bookings</h2>
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Guests</th>
+                <th>Table Type</th>
+                <th>Status</th>
+            </tr>
+            {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.name }}</td>
+                <td>{{ booking.email }}</td>
+                <td>{{ booking.phone }}</td>
+                <td>{{ booking.date }}</td>
+                <td>{{ booking.time }}</td>
+                <td>{{ booking.guests }}</td>
+                <td>{{ booking.table_type }}</td>
+                <td>{{ booking.status }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</section>
+
+<section class="page-section">
+    <h2>All Reviews</h2>
+    <div class="menu-grid">
+        {% for review in reviews %}
+        <div class="card">
+            <h3>{{ review.name }}</h3>
+            <p class="stars">
+                {% for i in range(review.rating|int) %}
+                    ⭐
+                {% endfor %}
+            </p>
+            <p>{{ review.message }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+</body>
+</html>

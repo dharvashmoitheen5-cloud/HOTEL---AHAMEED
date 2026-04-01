@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking History</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<nav>
+    <h1>HOTEL  AHAMEED</h1>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/menu">Menu</a>
+        <a href="/booking">Booking</a>
+        <a href="/history">History</a>
+        <a href="/logout">Logout</a>
+    </div>
+</nav>
+
+<section class="page-section">
+    <h2>Your Booking History</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <p class="flash {{ category }}">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <div class="menu-grid">
+        {% if bookings %}
+            {% for booking in bookings %}
+                <div class="card">
+                    <h3>{{ booking.table_type }} Table</h3>
+                    <p><strong>Date:</strong> {{ booking.date }}</p>
+                    <p><strong>Time:</strong> {{ booking.time }}</p>
+                    <p><strong>Guests:</strong> {{ booking.guests }}</p>
+                    <p><strong>Status:</strong> {{ booking.status }}</p>
+                    <p><strong>Request:</strong> {{ booking.special_request }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="card">
+                <h3>No Bookings Yet</h3>
+                <p>You haven’t booked any table yet.</p>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+</body>
+</html>

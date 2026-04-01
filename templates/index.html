@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOTEL  AHAMEED</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <nav>
+        <h1>HOTEL  AHAMEED</h1>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/menu">Menu</a>
+            <a href="/booking">Booking</a>
+            <a href="/reviews">Reviews</a>
+            <a href="/help">Help</a>
+
+            {% if session.get('user_name') %}
+                <a href="/history">History</a>
+                <span class="welcome-text">Hi, {{ session['user_name'] }}</span>
+                {% if session.get('role') == 'admin' %}
+                    <a href="/admin">Admin</a>
+                {% endif %}
+                <a href="/logout">Logout</a>
+            {% else %}
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="overlay">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                {% for category, message in messages %}
+                  <p class="flash {{ category }}">{{ message }}</p>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+
+            <h2>WELCOME TO AHAMEED DINING</h2>
+            <p>Experience taste, elegance, and unforgettable moments.</p>
+            <a href="/menu" class="btn">Explore Menu</a>
+        </div>
+    </section>
+
+    <!-- Floating Chat Button -->
+    <div class="chat-toggle" onclick="toggleChat()">💬</div>
+
+    <!-- Chat Box -->
+    <!-- Chat Box -->
+<div class="chat-container" id="chatContainer">
+    <div class="chat-header">
+        AHAMEED AI Assistant 🤖
+        <span onclick="toggleChat()">✖</span>
+    </div>
+
+    <div class="chat-language">
+        <select id="languageSelect">
+            <option value="English">English</option>
+            <option value="Tamil">Tamil</option>
+            <option value="Arabic">Arabic</option>
+            <option value="Hindi">Hindi</option>
+        </select>
+    </div>
+
+    <div class="chat-body" id="chatBody">
+        <div class="bot-message">Hello 👋 I'm your HOTEL  AHAMEED assistant. Ask me anything!</div>
+    </div>
+
+    <div class="chat-footer">
+        <input type="text" id="chatInput" placeholder="Type your message...">
+        <button onclick="startVoice()" class="voice-btn">🎤</button>
+        <button onclick="sendMessage()">➤</button>
+    </div>
+</div>
+copyright © 2025 HOTEL  AHAMEED. All rights reserved.
+    <script src="{{ url_for('static', filename='js/chat.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/voice.js') }}"></script>
+</body>
+</html>

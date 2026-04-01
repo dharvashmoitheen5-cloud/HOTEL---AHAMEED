@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Table - HOTEL  AHAMEED</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <nav>
+        <h1>HOTEL  AHAMEED</h1>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/menu">Menu</a>
+            <a href="/booking">Booking</a>
+            <a href="/reviews">Reviews</a>
+            <a href="/help">Help</a>
+            <a href="/history">History</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </nav>
+
+    <section class="form-page">
+        <div class="form-box">
+            <h2>Reserve Your Table</h2>
+
+            {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+                {% for category, message in messages %}
+                  <p class="flash {{ category }}">{{ message }}</p>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+
+            <div class="availability-box">
+                <h3>Available Table Types</h3>
+                <ul>
+                    <li>💑 Couple Table — Limited Slots</li>
+                    <li>👨‍👩‍👧 Family Table — Limited Slots</li>
+                    <li>🌟 VIP Table — Premium Limited Slots</li>
+                </ul>
+            </div>
+
+            <form method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <input type="text" name="phone" placeholder="Phone Number" required>
+                <input type="date" name="date" required>
+                <input type="time" name="time" required>
+                <input type="number" name="guests" placeholder="Number of Guests" required>
+
+                <select name="table_type" required>
+                    <option value="">Select Table Type</option>
+                    <option value="Couple Table">Couple Table</option>
+                    <option value="Family Table">Family Table</option>
+                    <option value="VIP Table">VIP Table</option>
+                </select>
+
+                <textarea name="special_request" placeholder="Special Request (optional)"></textarea>
+
+                <button type="submit" class="btn">Book Now</button>
+            </form>
+        </div>
+    </section>
+
+</body>
+</html>
